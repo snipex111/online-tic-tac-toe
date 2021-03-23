@@ -5,13 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".signup">
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#000070" />
+
     <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="email"
-        android:id="@+id/email"
         android:layout_marginTop="100dp"
-        />
+        android:hint="email"
+        android:textColor="#F6F3F3"
+        android:textColorHint="#EFEDED" />
 
     <EditText
         android:id="@+id/password"
@@ -19,7 +27,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/email"
         android:layout_marginTop="100dp"
-        android:hint="password" />
+        android:hint="password"
+        android:inputType="textPassword"
+        android:textColor="#F3EBEB"
+        android:textColorHint="#F1EBEB" />
 
     <Button
         android:id="@+id/register"

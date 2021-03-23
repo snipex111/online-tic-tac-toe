@@ -5,21 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".login">
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#000070" />
+
     <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="email"
-        android:id="@+id/email"
         android:layout_marginTop="100dp"
-        />
+        android:hint="email"
+        android:textColor="#FBF9F9"
+        android:textColorHint="#FFFCFC" />
 
     <EditText
         android:id="@+id/password"
+        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/email"
         android:layout_marginTop="100dp"
-        android:hint="password" />
+        android:hint="password"
+        android:textColor="#F6F1F1"
+        android:textColorHint="#F4EBEB" />
+
 
     <Button
         android:id="@+id/login"
