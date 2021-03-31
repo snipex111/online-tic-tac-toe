@@ -9,6 +9,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import android.os.Bundle;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -21,7 +29,11 @@ import java.util.ArrayList;
 
 public class BlogActivity extends AppCompatActivity {
     private FloatingActionButton floatingActionButton;
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
+    personAdapter
+            adapter; // Create Object of the Adapter class
+    DatabaseReference mbase; // Create object of the
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,33 +46,43 @@ public class BlogActivity extends AppCompatActivity {
                 startActivity(new Intent(BlogActivity.this, EditblogtextActivity.class));
             }
         });
+        mbase
+                = FirebaseDatabase.getInstance().getReference().child("Tictactoe").child("Blogs");
 
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        final ArrayList<String> list = new ArrayList<>();
+        recyclerView = findViewById(R.id.recycler1);
 
-        final CustomAdapter c = new CustomAdapter(this, R.layout.activity_blog, list);
-        recyclerView.setAdapter(c);
+        // To display the Recycler view linearly
+        recyclerView.setLayoutManager(
+                new LinearLayoutManager(this));
 
-        DatabaseReference refrence = FirebaseDatabase.getInstance().getReference().child("Tictactoe").child("Blogs");
-        refrence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+        // It is a class provide by the FirebaseUI to make a
+        // query in the database to fetch appropriate data
+        FirebaseRecyclerOptions<person> options
+                = new FirebaseRecyclerOptions.Builder<person>()
+                .setQuery(mbase, person.class)
+                .build();
+        // Connecting object of required Adapter class to
+        // the Adapter class itself
+        adapter = new personAdapter(options);
+        // Connecting Adapter class with the Recycler view*/
+        recyclerView.setAdapter(adapter);
+    }
 
+    // Function to tell the app to start getting
+    // data from database on starting of the activity
+    @Override protected void onStart()
+    {
+        super.onStart();
+        adapter.startListening();
+    }
 
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    list.add(snapshot.getValue().toString());
-                }
-                c.notifyDataSetChanged();
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+    // Function to tell the app to stop getting
+    // data from database on stoping of the activity
+    @Override protected void onStop()
+    {
+        super.onStop();
+        adapter.stopListening();
+    }
 
 
     }
