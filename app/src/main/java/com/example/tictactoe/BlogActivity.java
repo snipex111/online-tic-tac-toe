@@ -35,6 +35,7 @@ public class BlogActivity extends AppCompatActivity {
     DatabaseReference mbase; // Create object of the
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +86,6 @@ public class BlogActivity extends AppCompatActivity {
     }
 
 
-    }
+
 
 }
