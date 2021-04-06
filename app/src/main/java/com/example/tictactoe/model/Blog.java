@@ -1,25 +1,25 @@
-package com.example.tictactoe;
+package com.example.tictactoe.model;
 
-public class person {
+public class Blog {
     // Variable to store data corresponding
     // to firstname keyword in database
-    private String firstname;
+    private String BLOG;
 
     // Variable to store data corresponding
     // to lastname keyword in database
 
     // Mandatory empty constructor
     // for use of FirebaseUI
-    public person() {
+    public Blog() {
     }
 
     // Getter and setter method
-    public String getFirstname() {
-        return firstname;
+    public String getBLOG() {
+        return BLOG;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setBLOG(String BLOG) {
+        this.BLOG = BLOG;
     }
 
 }

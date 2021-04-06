@@ -4,23 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlaywithcomputerActivity">
+    tools:context=".PlaywithcomputerActivity"
+    android:background="#000070">
 
-    <View
-        android:id="@+id/view6"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#000070"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp" />
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="0dp"
+        android:layout_height="520dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/tic_tac_toe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp">
+
+            <ImageView
+                android:id="@+id/iv_11"
+                android:layout_width="@dimen/size_player_sign_image1"
+                android:layout_height="@dimen/size_player_sign_image"
+                android:layout_margin="5dp"
+                android:onClick="GameBoardClick"
+                android:padding="20dp"/>
+
+            <ImageView
+                android:id="@+id/iv_12"
+                android:layout_width="@dimen/size_player_sign_image1"
+                android:layout_height="@dimen/size_player_sign_image"
+                android:layout_margin="5dp"
+                android:onClick="GameBoardClick"
+                android:padding="20dp"/>
+
+            <ImageView
+                android:id="@+id/iv_13"
+                android:layout_width="@dimen/size_player_sign_image1"
+                android:layout_height="@dimen/size_player_sign_image"
+                android:layout_margin="5dp"
+                android:onClick="GameBoardClick"
+                android:padding="20dp"/>
 
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/tic_tac_toe"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="22dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_21"
+                android:layout_width="@dimen/size_player_sign_image1"
+                android:layout_height="@dimen/size_player_sign_image"
+                android:layout_margin="5dp"
+                android:onClick="GameBoardClick"
+                android:padding="20dp"/>
+
+            <ImageView
+                android:id="@+id/iv_22"
+                android:layout_width="@dimen/size_player_sign_image1"
+                android:layout_height="@dimen/size_player_sign_image"
+                android:layout_margin="5dp"
+                android:onClick="GameBoardClick"
+                android:padding="20dp"/>
+
+            <ImageView
+                android:id="@+id/iv_23"
+                android:layout_width="@dimen/size_player_sign_image1"
+                android:layout_height="@dimen/size_player_sign_image"
+                android:layout_margin="5dp"
+                android:onClick="GameBoardClick"
+                android:padding="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_31"
+                android:layout_width="@dimen/size_player_sign_image1"
+                android:layout_height="@dimen/size_player_sign_image"
+                android:layout_margin="5dp"
+                android:onClick="GameBoardClick"
+                android:padding="20dp"/>
+
+            <ImageView
+                android:id="@+id/iv_32"
+                android:layout_width="@dimen/size_player_sign_image1"
+                android:layout_height="@dimen/size_player_sign_image"
+                android:layout_margin="5dp"
+                android:onClick="GameBoardClick"
+                android:padding="20dp"/>
+
+            <ImageView
+                android:id="@+id/iv_33"
+                android:layout_width="@dimen/size_player_sign_image1"
+                android:layout_height="@dimen/size_player_sign_image"
+                android:layout_margin="5dp"
+                android:onClick="GameBoardClick"
+                android:padding="20dp"/>
+        </TableRow>
+
+    </TableLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

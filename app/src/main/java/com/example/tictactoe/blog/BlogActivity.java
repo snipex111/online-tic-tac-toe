@@ -1,6 +1,5 @@
-package com.example.tictactoe;
+package com.example.tictactoe.blog;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,31 +7,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import android.os.Bundle;
+
+import com.example.tictactoe.R;
+import com.example.tictactoe.model.Blog;
+import com.example.tictactoe.model.personAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class BlogActivity extends AppCompatActivity {
     private FloatingActionButton floatingActionButton;
     private RecyclerView recyclerView;
+    private FirebaseAuth auth;
     personAdapter
             adapter; // Create Object of the Adapter class
-    DatabaseReference mbase; // Create object of the
+    DatabaseReference mbase;// Create object of the
+    private String UID;
 
 
 
@@ -40,6 +33,7 @@ public class BlogActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog);
+        auth = FirebaseAuth.getInstance();
         floatingActionButton = findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +41,8 @@ public class BlogActivity extends AppCompatActivity {
                 startActivity(new Intent(BlogActivity.this, EditblogtextActivity.class));
             }
         });
+
+        UID=auth.getCurrentUser().getUid();
         mbase
                 = FirebaseDatabase.getInstance().getReference().child("Tictactoe").child("Blogs");
 
@@ -58,9 +54,9 @@ public class BlogActivity extends AppCompatActivity {
 
         // It is a class provide by the FirebaseUI to make a
         // query in the database to fetch appropriate data
-        FirebaseRecyclerOptions<person> options
-                = new FirebaseRecyclerOptions.Builder<person>()
-                .setQuery(mbase, person.class)
+        FirebaseRecyclerOptions<Blog> options
+                = new FirebaseRecyclerOptions.Builder<Blog>()
+                .setQuery(mbase, Blog.class)
                 .build();
         // Connecting object of required Adapter class to
         // the Adapter class itself

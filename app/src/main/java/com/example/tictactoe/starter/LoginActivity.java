@@ -1,4 +1,4 @@
-package com.example.tictactoe;
+package com.example.tictactoe.starter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.tictactoe.MainActivity;
+import com.example.tictactoe.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;

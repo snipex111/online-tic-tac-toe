@@ -1,4 +1,4 @@
-package com.example.tictactoe;
+package com.example.tictactoe.model;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tictactoe.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
@@ -16,31 +17,31 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 // FirebaseUI. it provides functions to bind, adapt and show
 // database contents in a Recycler View
 public class personAdapter extends FirebaseRecyclerAdapter<
-        person, personAdapter.personsViewholder> {
+        Blog, personAdapter.personsViewholder> {
 
     public personAdapter(
-            @NonNull FirebaseRecyclerOptions<person> options) {
+            @NonNull FirebaseRecyclerOptions<Blog> options) {
         super(options);
     }
 
     // Function to bind the view in Card view(here
-    // "person.xml") iwth data in
-    // model class(here "person.class")
+    // "Blog.xml") iwth data in
+    // model class(here "Blog.class")
     @Override
     protected void
     onBindViewHolder(@NonNull personsViewholder holder,
-                     int position, @NonNull person model) {
+                     int position, @NonNull Blog model) {
 
         // Add firstname from model class (here
-        // "person.class")to appropriate view in Card
-        // view (here "person.xml")
-        holder.firstname.setText(model.getFirstname());
+        // "Blog.class")to appropriate view in Card
+        // view (here "Blog.xml")
+        holder.firstname.setText(model.getBLOG());
 
 
     }
 
     // Function to tell the class about the Card view (here
-    // "person.xml")in
+    // "Blog.xml")in
     // which the data will be shown
     @NonNull
     @Override
@@ -54,7 +55,7 @@ public class personAdapter extends FirebaseRecyclerAdapter<
     }
 
     // Sub Class to create references of the views in Crad
-    // view (here "person.xml")
+    // view (here "Blog.xml")
     class personsViewholder
             extends RecyclerView.ViewHolder {
         TextView firstname;

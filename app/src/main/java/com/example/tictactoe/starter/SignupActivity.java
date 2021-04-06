@@ -1,4 +1,4 @@
-package com.example.tictactoe;
+package com.example.tictactoe.starter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,16 +11,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.tictactoe.MainActivity;
+import com.example.tictactoe.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class SignupActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private Button register;
     private FirebaseAuth auth;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,7 @@ public class SignupActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         register = findViewById(R.id.register);
         auth = FirebaseAuth.getInstance();
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
