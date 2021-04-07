@@ -55,7 +55,7 @@ public class PlaywithcomputerActivity extends AppCompatActivity {
                 break;
 
         }
-        PlayGame(selectedblock,selectedImage);
+        PlayGame(selectedblock, selectedImage);
 
     }
 
@@ -97,32 +97,48 @@ public class PlaywithcomputerActivity extends AppCompatActivity {
             gameState = 3;
 
 
-
-        }
-        else{
+        } else {
             Random r = new Random();
             int randomIndex = r.nextInt(emptyblocks.size());
             int selectedblock = emptyblocks.get(randomIndex);
             ImageView selectedImage = (ImageView) findViewById(R.id.iv_11);
-            switch (selectedblock){
-                case 1: selectedImage =(ImageView) findViewById(R.id.iv_11);break;
-                case 2: selectedImage =(ImageView) findViewById(R.id.iv_12);break;
-                case 3: selectedImage =(ImageView) findViewById(R.id.iv_13);break;
-                case 4: selectedImage =(ImageView) findViewById(R.id.iv_21);break;
-                case 5: selectedImage =(ImageView) findViewById(R.id.iv_22);break;
-                case 6: selectedImage =(ImageView) findViewById(R.id.iv_23);break;
-                case 7: selectedImage =(ImageView) findViewById(R.id.iv_31);break;
-                case 8: selectedImage =(ImageView) findViewById(R.id.iv_32);break;
-                case 9: selectedImage =(ImageView) findViewById(R.id.iv_33);break;
+            switch (selectedblock) {
+                case 1:
+                    selectedImage = (ImageView) findViewById(R.id.iv_11);
+                    break;
+                case 2:
+                    selectedImage = (ImageView) findViewById(R.id.iv_12);
+                    break;
+                case 3:
+                    selectedImage = (ImageView) findViewById(R.id.iv_13);
+                    break;
+                case 4:
+                    selectedImage = (ImageView) findViewById(R.id.iv_21);
+                    break;
+                case 5:
+                    selectedImage = (ImageView) findViewById(R.id.iv_22);
+                    break;
+                case 6:
+                    selectedImage = (ImageView) findViewById(R.id.iv_23);
+                    break;
+                case 7:
+                    selectedImage = (ImageView) findViewById(R.id.iv_31);
+                    break;
+                case 8:
+                    selectedImage = (ImageView) findViewById(R.id.iv_32);
+                    break;
+                case 9:
+                    selectedImage = (ImageView) findViewById(R.id.iv_33);
+                    break;
             }
-            PlayGame(selectedblock,selectedImage);
+            PlayGame(selectedblock, selectedImage);
 
         }
 
     }
 
     private void showAlert(String Title) {
-        AlertDialog.Builder b=new AlertDialog.Builder(this,R.style.TransparentDailog);
+        AlertDialog.Builder b = new AlertDialog.Builder(this, R.style.TransparentDailog);
         b.setTitle(Title).setMessage("start new game").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -131,7 +147,7 @@ public class PlaywithcomputerActivity extends AppCompatActivity {
         }).setNegativeButton("main menu", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent i=new Intent(getApplicationContext(),PlayActivity.class);
+                Intent i = new Intent(getApplicationContext(), PlayActivity.class);
                 startActivity(i);
                 finish();
             }
@@ -139,21 +155,40 @@ public class PlaywithcomputerActivity extends AppCompatActivity {
 
 
     }
-    void Resetgame(){
-        gameState=1;
-        activePlayer=1;
+
+    void Resetgame() {
+        gameState = 1;
+        activePlayer = 1;
         player2.clear();
         player1.clear();
         ImageView iv;
-        iv=(ImageView)findViewById(R.id.iv_11); iv.setImageResource(0);iv.setEnabled(true);
-        iv=(ImageView)findViewById(R.id.iv_12); iv.setImageResource(0);iv.setEnabled(true);
-        iv=(ImageView)findViewById(R.id.iv_13); iv.setImageResource(0);iv.setEnabled(true);
-        iv=(ImageView)findViewById(R.id.iv_21); iv.setImageResource(0);iv.setEnabled(true);
-        iv=(ImageView)findViewById(R.id.iv_22); iv.setImageResource(0);iv.setEnabled(true);
-        iv=(ImageView)findViewById(R.id.iv_23); iv.setImageResource(0);iv.setEnabled(true);
-        iv=(ImageView)findViewById(R.id.iv_31); iv.setImageResource(0);iv.setEnabled(true);
-        iv=(ImageView)findViewById(R.id.iv_32); iv.setImageResource(0);iv.setEnabled(true);
-        iv=(ImageView)findViewById(R.id.iv_33); iv.setImageResource(0);iv.setEnabled(true);
+        iv = (ImageView) findViewById(R.id.iv_11);
+        iv.setImageResource(0);
+        iv.setEnabled(true);
+        iv = (ImageView) findViewById(R.id.iv_12);
+        iv.setImageResource(0);
+        iv.setEnabled(true);
+        iv = (ImageView) findViewById(R.id.iv_13);
+        iv.setImageResource(0);
+        iv.setEnabled(true);
+        iv = (ImageView) findViewById(R.id.iv_21);
+        iv.setImageResource(0);
+        iv.setEnabled(true);
+        iv = (ImageView) findViewById(R.id.iv_22);
+        iv.setImageResource(0);
+        iv.setEnabled(true);
+        iv = (ImageView) findViewById(R.id.iv_23);
+        iv.setImageResource(0);
+        iv.setEnabled(true);
+        iv = (ImageView) findViewById(R.id.iv_31);
+        iv.setImageResource(0);
+        iv.setEnabled(true);
+        iv = (ImageView) findViewById(R.id.iv_32);
+        iv.setImageResource(0);
+        iv.setEnabled(true);
+        iv = (ImageView) findViewById(R.id.iv_33);
+        iv.setImageResource(0);
+        iv.setEnabled(true);
 
     }
 

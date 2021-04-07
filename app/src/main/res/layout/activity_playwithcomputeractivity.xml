@@ -9,7 +9,7 @@
 
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="520dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/tic_tac_toe"

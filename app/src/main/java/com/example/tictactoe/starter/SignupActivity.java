@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignupActivity extends AppCompatActivity {
     private EditText email;
@@ -25,7 +27,8 @@ public class SignupActivity extends AppCompatActivity {
     private Button register;
     private FirebaseAuth auth;
     private FirebaseAnalytics mFirebaseAnalytics;
-
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myref = database.getReference();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,7 @@ public class SignupActivity extends AppCompatActivity {
         register = findViewById(R.id.register);
         auth = FirebaseAuth.getInstance();
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,12 +56,28 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
+//    private String Convertemailtostring(String s) {
+//        String value = s.substring(0, s.indexOf('@'));
+//        value = value.replace(".", "");
+//        return value;
+//    }
+
 
     private void registerUser(String txt_email, String txt_password) {
         auth.createUserWithEmailAndPassword(txt_email, txt_password).addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+//                    //add email to users child
+////                    String txt_email = email.getText().toString();
+//                    String k=Convertemailtostring(txt_email);
+//                    FirebaseDatabase.getInstance().getReference().child("users").;
+
+
+
+
+
+
                     Toast.makeText(SignupActivity.this, "registration succesfull", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(SignupActivity.this, MainActivity.class));
 
@@ -67,6 +87,7 @@ public class SignupActivity extends AppCompatActivity {
 
             }
         });
+
 
 
     }
