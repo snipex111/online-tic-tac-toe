@@ -1,0 +1,426 @@
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_main.xml	(revision 9c04e1bc8665e6300636fe4c730cd393a9511f67)
++++ app/src/main/res/layout/activity_main.xml	(date 1614341153851)
+@@ -4,7 +4,7 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".MainActivity">
++    tools:context=".Startactivity">
+ 
+     <Button
+         android:id="@+id/login"
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build.gradle	(revision 9c04e1bc8665e6300636fe4c730cd393a9511f67)
++++ build.gradle	(date 1613673077353)
+@@ -5,7 +5,10 @@
+         jcenter()
+     }
+     dependencies {
++
++        
+         classpath "com.android.tools.build:gradle:4.1.2"
++        classpath 'com.google.gms:google-services:4.3.5'
+ 
+         // NOTE: Do not place your application dependencies here; they belong
+         // in the individual module build.gradle files
+Index: app/src/main/java/com/example/tictactoe/Startactivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/tictactoe/Startactivity.java	(date 1614341153866)
++++ app/src/main/java/com/example/tictactoe/Startactivity.java	(date 1614341153866)
+@@ -0,0 +1,35 @@
++package com.example.tictactoe;
++
++import androidx.appcompat.app.AppCompatActivity;
++
++import android.content.Intent;
++import android.os.Bundle;
++import android.view.View;
++import android.widget.Button;
++
++public class Startactivity extends AppCompatActivity {
++private Button signup;
++private Button login;
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_main);
++        signup=findViewById(R.id.signup);
++        login=findViewById(R.id.login);
++        signup.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                startActivity(new Intent(Startactivity.this , signup.class));
++                finish();
++            }
++        });
++        login.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                startActivity(new Intent(Startactivity.this ,login.class) );
++                finish();
++            }
++        });
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_main2.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_main2.xml	(date 1614341391527)
++++ app/src/main/res/layout/activity_main2.xml	(date 1614341391527)
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".MainActivity">
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/tictactoe/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/tictactoe/MainActivity.java	(revision 9c04e1bc8665e6300636fe4c730cd393a9511f67)
++++ app/src/main/java/com/example/tictactoe/MainActivity.java	(date 1614341391660)
+@@ -3,17 +3,12 @@
+ import androidx.appcompat.app.AppCompatActivity;
+ 
+ import android.os.Bundle;
+-import android.widget.Button;
+ 
+ public class MainActivity extends AppCompatActivity {
+-private Button signup;
+-private Button login;
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_main);
+-        signup=findViewById(R.id.signup);
+-        login=findViewById(R.id.login);
++        setContentView(R.layout.activity_main2);
+     }
+ }
+\ No newline at end of file
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+--- gradle/wrapper/gradle-wrapper.properties	(revision 9c04e1bc8665e6300636fe4c730cd393a9511f67)
++++ gradle/wrapper/gradle-wrapper.properties	(date 1613672731522)
+@@ -1,6 +1,6 @@
+-#Thu Feb 18 11:21:13 IST 2021
++#Thu Feb 18 23:55:31 IST 2021
+ distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-bin.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-all.zip
+Index: app/src/main/res/layout/activity_signup.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_signup.xml	(revision 9c04e1bc8665e6300636fe4c730cd393a9511f67)
++++ app/src/main/res/layout/activity_signup.xml	(date 1613641006429)
+@@ -1,9 +1,34 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     tools:context=".signup">
++    <EditText
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:hint="email"
++        android:id="@+id/email"
++        android:layout_marginTop="100dp"
++        />
++
++    <EditText
++        android:id="@+id/password"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_below="@id/email"
++        android:layout_marginTop="100dp"
++        android:hint="password" />
++
++    <Button
++        android:id="@+id/register"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_below="@id/password"
++        android:layout_marginTop="100dp"
++        android:text="Sign up"
++         />
++
+ 
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
++</RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_login.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_login.xml	(revision 9c04e1bc8665e6300636fe4c730cd393a9511f67)
++++ app/src/main/res/layout/activity_login.xml	(date 1614341601733)
+@@ -1,9 +1,34 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     tools:context=".login">
++    <EditText
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:hint="email"
++        android:id="@+id/email"
++        android:layout_marginTop="100dp"
++        />
++
++    <EditText
++        android:id="@+id/password"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_below="@id/email"
++        android:layout_marginTop="100dp"
++        android:hint="password" />
++
++    <Button
++        android:id="@+id/login "
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_below="@id/password"
++        android:layout_marginTop="100dp"
++        android:text="LOGIN"
++        />
++
+ 
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
++</RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/tictactoe/signup.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/tictactoe/signup.java	(revision 9c04e1bc8665e6300636fe4c730cd393a9511f67)
++++ app/src/main/java/com/example/tictactoe/signup.java	(date 1614341483057)
+@@ -1,14 +1,74 @@
+ package com.example.tictactoe;
+ 
++import androidx.annotation.NonNull;
+ import androidx.appcompat.app.AppCompatActivity;
+ 
++import android.content.Intent;
+ import android.os.Bundle;
++import android.text.TextUtils;
++import android.view.View;
++import android.widget.Button;
++import android.widget.EditText;
++import android.widget.Toast;
++
++import com.google.android.gms.tasks.OnCompleteListener;
++import com.google.android.gms.tasks.Task;
++import com.google.firebase.auth.AuthResult;
++import com.google.firebase.auth.FirebaseAuth;
+ 
+ public class signup extends AppCompatActivity {
++    private EditText email;
++    private EditText password;
++    private Button register;
++    private FirebaseAuth auth;
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_signup);
++        email=findViewById(R.id.email);
++        password=findViewById(R.id.password);
++        register=findViewById(R.id.register);
++        auth=FirebaseAuth.getInstance();
++
++        register.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                String txt_email=email.getText().toString();
++                String txt_password=password.getText().toString();
++                if(TextUtils.isEmpty(txt_email)||TextUtils.isEmpty(txt_password))
++                {
++                    Toast.makeText(signup.this, "fill up credentials", Toast.LENGTH_SHORT).show();
++                }
++                else if(txt_password.length()<8)
++                {
++                    Toast.makeText(signup.this, "password too short", Toast.LENGTH_SHORT).show();
++                }
++                else {
++                    registerUser(txt_email,txt_password);
++
++                }
++            }
++        });
++    }
++
++    private void registerUser(String txt_email, String txt_password) {
++        auth.createUserWithEmailAndPassword(txt_email, txt_password).addOnCompleteListener(signup.this, new OnCompleteListener<AuthResult>() {
++            @Override
++            public void onComplete(@NonNull Task<AuthResult> task) {
++                if(task.isSuccessful())
++                {
++                    Toast.makeText(signup.this, "registration succesfull", Toast.LENGTH_SHORT).show();
++                    startActivity(new Intent(signup.this,MainActivity.class));
++                    finish();
++
++                }
++                else
++                {
++                    Toast.makeText(signup.this, "registration failed", Toast.LENGTH_SHORT).show();
++                }
++
++            }
++        });
+     }
+ }
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/gradle.xml	(revision 9c04e1bc8665e6300636fe4c730cd393a9511f67)
++++ .idea/gradle.xml	(date 1613672874652)
+@@ -1,5 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="GradleMigrationSettings" migrationVersion="1" />
+   <component name="GradleSettings">
+     <option name="linkedExternalProjectsSettings">
+       <GradleProjectSettings>
+Index: app/src/main/java/com/example/tictactoe/login.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/tictactoe/login.java	(revision 9c04e1bc8665e6300636fe4c730cd393a9511f67)
++++ app/src/main/java/com/example/tictactoe/login.java	(date 1614355534307)
+@@ -3,12 +3,31 @@
+ import androidx.appcompat.app.AppCompatActivity;
+ 
+ import android.os.Bundle;
++import android.view.View;
++import android.widget.Button;
++import android.widget.EditText;
++
++import com.google.firebase.auth.FirebaseAuth;
+ 
+ public class login extends AppCompatActivity {
+-
++    private EditText email;
++    private EditText password;
++    private Button login;
++private FirebaseAuth auth;
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_login);
++        email=findViewById(R.id.email);
++        password=findViewById(R.id.password);
++        login=findViewById(R.id.login);
++        auth=FirebaseAuth.getInstance();
++        login.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                String txt_email=email.getText()
++                loginUser();
++            }
++        });
+     }
+ }
+\ No newline at end of file
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision 9c04e1bc8665e6300636fe4c730cd393a9511f67)
++++ app/build.gradle	(date 1613641370102)
+@@ -1,5 +1,6 @@
+ plugins {
+     id 'com.android.application'
++    id 'com.google.gms.google-services'
+ }
+ 
+ android {
+@@ -33,6 +34,7 @@
+     implementation 'androidx.appcompat:appcompat:1.2.0'
+     implementation 'com.google.android.material:material:1.3.0'
+     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
++    implementation 'com.google.firebase:firebase-auth:20.0.2'
+     testImplementation 'junit:junit:4.+'
+     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 9c04e1bc8665e6300636fe4c730cd393a9511f67)
++++ app/src/main/AndroidManifest.xml	(date 1614341391407)
+@@ -9,9 +9,10 @@
+         android:roundIcon="@mipmap/ic_launcher_round"
+         android:supportsRtl="true"
+         android:theme="@style/Theme.TicTacToe">
+-        <activity android:name=".login"></activity>
++        <activity android:name=".MainActivity"></activity>
++        <activity android:name=".login" />
+         <activity android:name=".signup" />
+-        <activity android:name=".MainActivity">
++        <activity android:name=".Startactivity">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+ 
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(date 1613629726332)
++++ .idea/vcs.xml	(date 1613629726332)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
